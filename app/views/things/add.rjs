@@ -1,0 +1,7 @@
+page.select("div#notice").each { |div| div.hide }
+
+page.replace_html("things", :partial => "things", :object => @things)
+
+page[:text].value = ""
+
+page[:new_thing].visual_effect :highlight

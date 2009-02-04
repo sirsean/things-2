@@ -1,0 +1,28 @@
+
+<fieldset>
+	<legend>Add Thing</legend>
+	<% form_remote_tag :url => { :action => :add } do |form| %>
+		<%= text_field_tag :text %>
+		
+		<%= submit_tag "Add", :class => "submit" %>
+	<% end %>
+</fieldset>
+
+<p>
+	<%= link_to_remote "Home",
+	 		:url => { :controller => :things, :action => :index },
+			:update => "things"
+	%>
+	<%= link_to_remote "Today", 
+			:url => { :controller => :things, :action => :today },
+			:update => "things"
+	%>
+	<%= link_to_remote "Last Week",
+			:url => { :controller => :things, :action => :lastweek },
+			:update => "things"
+	%>
+</p>
+
+<div id="things">
+	<%= render(:partial => "things", :object => @things) %>
+</div>

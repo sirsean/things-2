@@ -1,0 +1,13 @@
+<% if thing == @new_thing %>
+<li id="new_thing">
+<% else %>
+<li>
+<% end %>
+	<%= thing.text %>
+	<span class="date"><%= thing.created_at %></span>
+	<%= link_to_remote 'Delete', 
+			:url => { :controller => :things, :action => :delete, :id => thing },
+			:update => "things",
+	 		#:confirm => "Are you sure?",
+			:method => :post %>
+</li>
